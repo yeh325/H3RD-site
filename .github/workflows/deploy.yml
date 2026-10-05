@@ -25,7 +25,11 @@ jobs:
       - name: Assemble the publishable site
         run: |
           mkdir -p _site
-          cp -R index.html css js assets favicon.ico site.webmanifest CNAME .nojekyll _site/
+          cp -R index.html css js assets favicon.ico site.webmanifest .nojekyll _site/
+          # CNAME is optional. With Actions-based publishing the custom domain
+          # lives in Settings → Pages, and GitHub deletes this file whenever you
+          # remove the domain there — so its absence must not fail the build.
+          if [ -f CNAME ]; then cp CNAME _site/; fi
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

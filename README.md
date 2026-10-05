@@ -117,7 +117,10 @@ Two settings live in **Settings → Pages**, not in this repo:
 Publishing from the branch instead exposes the whole repo root — `README.md` and
 `.gitignore` both return 200 that way, and 404 once the workflow owns the site.
 The `CNAME` file still ships inside the artifact, but under Actions-based
-publishing the custom domain *setting* above is what counts.
+publishing the custom domain *setting* above is what counts — which is why the
+workflow copies it only if it is present. Removing or re-adding the custom
+domain in that UI makes GitHub commit to `master` itself (it deletes the `CNAME`
+file, then recreates it), so those commits showing up here is expected.
 
 ### DNS
 
