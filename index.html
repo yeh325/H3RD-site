@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>H3RD — Precision Tracking. Effortless Efficiency.</title>
+<meta name="description" content="H3RD bridges the gap between physical floor operations and digital management systems, replacing antiquated paper routing with smart e-ink labels featuring BLE location tracking, real-time screen updates, and visual notification features to eliminate human error." />
+<meta name="theme-color" content="#0c0d0e" />
+<meta name="author" content="H3RD, LLC" />
+<link rel="canonical" href="https://h3rd.net/" />
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="H3RD" />
+<meta property="og:title" content="H3RD — Precision Tracking. Effortless Efficiency." />
+<meta property="og:description" content="Smart e-ink tags with BLE spatial intelligence that connect the physical floor to your digital systems." />
+<meta property="og:url" content="https://h3rd.net/" />
+<meta property="og:image" content="https://h3rd.net/assets/images/logo-white.png" />
+<meta property="og:image:alt" content="The H3RD elephant emblem." />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="H3RD — Precision Tracking. Effortless Efficiency." />
+<meta name="twitter:description" content="Smart e-ink tags with BLE spatial intelligence that connect the physical floor to your digital systems." />
+<meta name="twitter:image" content="https://h3rd.net/assets/images/logo-white.png" />
+
+<link rel="icon" href="favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png" />
+<link rel="icon" type="image/png" sizes="64x64" href="assets/images/favicon.png" />
+<link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
+<link rel="manifest" href="site.webmanifest" />
+
+<!-- Spectral (headings) · Merriweather (sub-headings) · Roboto (body) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@300;400;500;700;900&family=Spectral:wght@700;800&display=swap" />
+
+<link rel="stylesheet" href="css/styles.css" />
+<script>
+  /* Opt the scroll-reveal styles in before first paint. If anything here
+     fails, or the browser has no IntersectionObserver, the attribute-driven
+     animations simply never engage and all content stays visible. */
+  (function () {
+    try {
+      if ('IntersectionObserver' in window &&
+          !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('anim');
+      }
+    } catch (e) { /* progressive enhancement only */ }
+  }());
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "H3RD, LLC",
+  "url": "https://h3rd.net/",
+  "logo": "https://h3rd.net/assets/images/logo-white.png",
+  "description": "E-ink smart tags with BLE spatial intelligence that connect the physical floor to ERP, WMS and live dashboards.",
+  "email": "info@h3rd.net",
+  "telephone": "+1-408-643-4444",
+  "areaServed": "US",
+  "knowsAbout": ["e-ink smart labels", "BLE location tracking", "spatial intelligence", "geofenced transactions", "loss prevention", "WMS integration"]
+}
+</script>
+</head>
+<body>
+<div class="grid-overlay" aria-hidden="true"></div>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="site-header" id="site-header">
+  <div class="container header__inner">
+    <a class="brand" href="#top" aria-label="H3RD — back to top">
+      <img class="brand__mark" src="assets/images/logo-white-160.png" alt="" width="160" height="135" decoding="async" />
+      <span class="brand__name">H3RD</span>
+    </a>
+
+    <nav class="nav" id="primary-nav" aria-label="Primary">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="#methodology">Methodology</a></li>
+        <li><a class="nav__link" href="#capabilities">Technology</a></li>
+        <li><a class="nav__link" href="#roi-markets">ROI &amp; Markets</a></li>
+      </ul>
+      <a class="btn btn--primary nav__cta" href="https://zcal.co/h3rd" target="_blank" rel="noopener noreferrer">Book a Demo</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="container hero__inner">
+      <h1 class="hero__title" data-reveal>
+        Precision Tracking.
+        <span class="hero__title-accent">Effortless Efficiency.</span>
+      </h1>
+      <p class="hero__lead" data-reveal>
+        H3RD bridges the gap between physical floor operations and digital management
+        systems, replacing antiquated paper routing with smart e-ink labels featuring BLE
+        location tracking, real-time screen updates, and visual notification features to
+        eliminate human error.
+      </p>
+      <p class="hero__actions" data-reveal>
+        <a class="btn btn--primary btn--lg" href="#methodology">Explore the Workflow</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ 01 / METHODOLOGY ============ -->
+  <section class="section" id="methodology">
+    <div class="container">
+      <header class="section__head" data-reveal>
+        <span class="chip">01 / Methodology</span>
+        <h2 class="section__title">H3RD Smart Tag Workflow</h2>
+        <p class="section__lead">
+          From tagged asset to real-time visibility. Interact with the workflow below to
+          understand how H3RD connects the physical floor to your digital systems.
+        </p>
+      </header>
+
+      <div class="workflow" data-reveal>
+        <ol class="workflow__rail" role="tablist" aria-label="H3RD smart tag workflow">
+          <li class="workflow__cell">
+            <button class="workflow__step is-active" id="wf-tab-0" type="button" role="tab"
+                    aria-selected="true" aria-controls="wf-panel-0" data-step="0">
+              <span class="workflow__tile">
+                <span class="workflow__num" aria-hidden="true">1</span>
+                <svg class="workflow__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"></path>
+                  <path d="M12 22V12"></path>
+                  <polyline points="3.29 7 12 12 20.71 7"></polyline>
+                  <path d="m7.5 4.27 9 5.15"></path>
+                </svg>
+              </span>
+              <span class="workflow__label">Smart Tag</span>
+            </button>
+          </li>
+
+          <li class="workflow__cell">
+            <button class="workflow__step" id="wf-tab-1" type="button" role="tab"
+                    aria-selected="false" aria-controls="wf-panel-1" data-step="1" tabindex="-1">
+              <span class="workflow__tile">
+                <span class="workflow__num" aria-hidden="true">2</span>
+                <svg class="workflow__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4.9 16.1C1 12.2 1 5.8 4.9 1.9"></path>
+                  <path d="M7.8 4.7a6.14 6.14 0 0 0-.8 7.5"></path>
+                  <circle cx="12" cy="9" r="2"></circle>
+                  <path d="M16.2 4.8c2 2 2.26 5.11.8 7.47"></path>
+                  <path d="M19.1 1.9a9.96 9.96 0 0 1 0 14.1"></path>
+                  <path d="M9.5 18h5"></path>
+                  <path d="m8 22 4-11 4 11"></path>
+                </svg>
+              </span>
+              <span class="workflow__label">Gateway</span>
+            </button>
+          </li>
+
+          <li class="workflow__cell">
+            <button class="workflow__step" id="wf-tab-2" type="button" role="tab"
+                    aria-selected="false" aria-controls="wf-panel-2" data-step="2" tabindex="-1">
+              <span class="workflow__tile">
+                <span class="workflow__num" aria-hidden="true">3</span>
+                <svg class="workflow__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect width="20" height="14" x="2" y="3" rx="2"></rect>
+                  <line x1="8" x2="16" y1="21" y2="21"></line>
+                  <line x1="12" x2="12" y1="17" y2="21"></line>
+                </svg>
+              </span>
+              <span class="workflow__label">Live Dashboard</span>
+            </button>
+          </li>
+
+          <li class="workflow__cell">
+            <button class="workflow__step" id="wf-tab-3" type="button" role="tab"
+                    aria-selected="false" aria-controls="wf-panel-3" data-step="3" tabindex="-1">
+              <span class="workflow__tile">
+                <span class="workflow__num" aria-hidden="true">4</span>
+                <svg class="workflow__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+                </svg>
+              </span>
+              <span class="workflow__label">WMS / ERP</span>
+            </button>
+          </li>
+        </ol>
+
+        <div class="workflow__panels">
+          <article class="workflow__panel is-active" id="wf-panel-0" role="tabpanel"
+                   aria-labelledby="wf-tab-0" data-panel="0">
+            <div class="workflow__panel-copy">
+              <span class="chip chip--sm">01 / Smart Tag</span>
+              <h3 class="workflow__panel-title">Smart Tag</h3>
+              <p class="workflow__quote">A pallet, tote, or bin gets an H3RD e-ink smart tag.</p>
+              <p class="workflow__note">Displays real-time part numbers, quantities, and operational routing instructions directly on the asset.</p>
+            </div>
+            <div class="workflow__panel-art" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"></path>
+                <path d="M12 22V12"></path>
+                <polyline points="3.29 7 12 12 20.71 7"></polyline>
+                <path d="m7.5 4.27 9 5.15"></path>
+              </svg>
+            </div>
+          </article>
+
+          <article class="workflow__panel" id="wf-panel-1" role="tabpanel"
+                   aria-labelledby="wf-tab-1" data-panel="1" hidden>
+            <div class="workflow__panel-copy">
+              <span class="chip chip--sm">02 / Gateway</span>
+              <h3 class="workflow__panel-title">Gateway</h3>
+              <p class="workflow__quote">Bluetooth gateways transmit and receive tag updates and location data.</p>
+              <p class="workflow__note">Mesh network captures precise dwell times, area entry/exits, and instantly pushes visual updates to the e-ink tags.</p>
+            </div>
+            <div class="workflow__panel-art" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4.9 16.1C1 12.2 1 5.8 4.9 1.9"></path>
+                <path d="M7.8 4.7a6.14 6.14 0 0 0-.8 7.5"></path>
+                <circle cx="12" cy="9" r="2"></circle>
+                <path d="M16.2 4.8c2 2 2.26 5.11.8 7.47"></path>
+                <path d="M19.1 1.9a9.96 9.96 0 0 1 0 14.1"></path>
+                <path d="M9.5 18h5"></path>
+                <path d="m8 22 4-11 4 11"></path>
+              </svg>
+            </div>
+          </article>
+
+          <article class="workflow__panel" id="wf-panel-2" role="tabpanel"
+                   aria-labelledby="wf-tab-2" data-panel="2" hidden>
+            <div class="workflow__panel-copy">
+              <span class="chip chip--sm">03 / Live Dashboard</span>
+              <h3 class="workflow__panel-title">Live Dashboard</h3>
+              <p class="workflow__quote">Managers see movement, status, and bottlenecks in real time.</p>
+              <p class="workflow__note">Digital twin interface highlights stalled processes with geospatial tracking map.</p>
+            </div>
+            <div class="workflow__panel-art" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="14" x="2" y="3" rx="2"></rect>
+                <line x1="8" x2="16" y1="21" y2="21"></line>
+                <line x1="12" x2="12" y1="17" y2="21"></line>
+              </svg>
+            </div>
+          </article>
+
+          <article class="workflow__panel" id="wf-panel-3" role="tabpanel"
+                   aria-labelledby="wf-tab-3" data-panel="3" hidden>
+            <div class="workflow__panel-copy">
+              <span class="chip chip--sm">04 / WMS / ERP</span>
+              <h3 class="workflow__panel-title">WMS / ERP</h3>
+              <p class="workflow__quote">Data flows into your existing systems for tracking and action.</p>
+              <p class="workflow__note">Trigger automated back-office transactions via modern API connections seamlessly.</p>
+            </div>
+            <div class="workflow__panel-art" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+              </svg>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <div class="outcomes" data-reveal>
+        <span class="chip">System Outcomes</span>
+        <h3 class="outcomes__title">The H3RD Advantage</h3>
+        <ul class="outcomes__grid">
+          <li class="outcome">
+            <span class="outcome__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </span>
+            <h4 class="outcome__title">Real-Time Visibility</h4>
+            <p class="outcome__text">Instant location and status data for every asset on the floor.</p>
+          </li>
+          <li class="outcome">
+            <span class="outcome__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+            </span>
+            <h4 class="outcome__title">Operator Clarity</h4>
+            <p class="outcome__text">E-ink displays ensure workers always know exactly what to do next.</p>
+          </li>
+          <li class="outcome">
+            <span class="outcome__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.801 10A10 10 0 1 1 17 3.335"></path>
+                <path d="m9 11 3 3L22 4"></path>
+              </svg>
+            </span>
+            <h4 class="outcome__title">Fewer Manual Errors</h4>
+            <p class="outcome__text">Automated geo-transactions eliminate human scanning mistakes.</p>
+          </li>
+          <li class="outcome">
+            <span class="outcome__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15.39 4.39a1 1 0 0 0 1.68-.474 2.5 2.5 0 1 1 3.014 3.015 1 1 0 0 0-.474 1.68l1.683 1.682a2.414 2.414 0 0 1 0 3.414L19.61 15.39a1 1 0 0 1-1.68-.474 2.5 2.5 0 1 0-3.014 3.015 1 1 0 0 1 .474 1.68l-1.683 1.682a2.414 2.414 0 0 1-3.414 0L8.61 19.61a1 1 0 0 0-1.68.474 2.5 2.5 0 1 1-3.014-3.015 1 1 0 0 0 .474-1.68l-1.683-1.682a2.414 2.414 0 0 1 0-3.414L4.39 8.61a1 1 0 0 1 1.68.474 2.5 2.5 0 1 0 3.014-3.015 1 1 0 0 1-.474-1.68l1.683-1.682a2.414 2.414 0 0 1 3.414 0z"></path>
+              </svg>
+            </span>
+            <h4 class="outcome__title">Seamless Integration</h4>
+            <p class="outcome__text">Built to plug seamlessly into your existing ERP and WMS platforms.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 02 / TECHNOLOGY ============ -->
+  <section class="section" id="capabilities">
+    <div class="container">
+      <header class="section__head" data-reveal>
+        <span class="chip">02 / Technology</span>
+        <h2 class="section__title">Technology &amp; Operational Capabilities</h2>
+        <p class="section__lead">
+          A seamlessly integrated ecosystem of smart hardware and spatial-intelligence
+          software. H3RD replaces static tracking with dynamic, location-aware digital
+          labels that actively guide operators and orchestrate your floor&rsquo;s workflows
+          in real time.
+        </p>
+      </header>
+
+      <div class="specs">
+        <!-- I. E-ink smart labels -->
+        <article class="spec" data-reveal>
+          <div class="spec__stage">
+            <button class="label3d" id="label-flip" type="button" aria-pressed="false"
+                    aria-label="Flip the H3RD smart tag to see the reverse side">
+              <span class="label3d__inner">
+                <span class="label3d__face label3d__face--front">
+                  <span class="eink">
+                    <span class="eink__head">
+                      <span class="eink__brand">H3RD</span>
+                    </span>
+                    <span class="eink__body">
+                      <span class="eink__col">
+                        <span class="eink__k">Work Order</span>
+                        <span class="eink__wo">#4892</span>
+                        <span class="eink__tag">Priority</span>
+                        <span class="eink__k eink__k--tight">Routing:</span>
+                        <span class="eink__v">Final Assy</span>
+                      </span>
+                      <span class="eink__col eink__col--right">
+                        <span class="eink__zone">Zone B</span>
+                        <span class="eink__k eink__k--tight">Rack 42<br />Bin 12</span>
+                        <img class="eink__qr" src="assets/images/qr-label.svg" alt=""
+                             width="77" height="77" loading="lazy" decoding="async" />
+                      </span>
+                    </span>
+                    <span class="eink__foot">
+                      <span class="eink__bars" aria-hidden="true"></span>
+                      <span class="eink__k eink__k--tight">QTY: 144</span>
+                    </span>
+                  </span>
+                </span>
+                <span class="label3d__face label3d__face--back">
+                  <span class="eink__backmark">H3RD</span>
+                  <span class="eink__serial">Model: H3-75. SN: 94827103</span>
+                </span>
+              </span>
+            </button>
+          </div>
+          <div class="spec__body">
+            <span class="spec__num">I.</span>
+            <h3 class="spec__title">E-Ink Smart Labels</h3>
+            <p class="spec__text">
+              Enterprise-grade, ultra-low power tags (2.1&quot; to 7.5&quot;). Highly readable
+              under industrial glare, persistently displaying critical barcodes and dynamic
+              routing info even without power.
+            </p>
+          </div>
+        </article>
+
+        <!-- II. Spatial intelligence -->
+        <article class="spec" data-reveal>
+          <div class="spec__stage spec__stage--map spec__stage--grid">
+            <div class="map-frame">
+              <img src="assets/images/floor-map.svg" alt="Floor map of a facility showing receiving, raw mats, high-density storage, assembly cells, QA and kitting, packaging and outbound zones." width="1000" height="600" loading="lazy" decoding="async" />
+              <!-- Live BLE tag markers: the looping rings and locator lines of the
+                   original artwork. The coordinates come verbatim from the live bundle. -->
+              <svg class="map-tags" viewBox="0 0 1000 600" aria-hidden="true" focusable="false">
+                <g class="map-tag" transform="translate(135 190)">
+                  <line class="map-tag__line" x1="0" y1="0" x2="-80" y2="-40" stroke="#00E5FF" stroke-width="1" stroke-dasharray="4 4"></line>
+                  <line class="map-tag__line" x1="0" y1="0" x2="60" y2="90" stroke="#033156" stroke-width="1" stroke-dasharray="4 4"></line>
+                  <circle class="map-tag__ring" cx="0" cy="0" r="50" fill="none" stroke="#00E5FF" stroke-width="2"></circle>
+                  <circle class="map-tag__ring map-tag__ring--b" cx="0" cy="0" r="50" fill="none" stroke="#00E5FF" stroke-width="1"></circle>
+                  <circle class="map-tag__dot" cx="0" cy="0" r="4" fill="#00E5FF"></circle>
+                </g>
+                <g class="map-tag" transform="translate(405 420)">
+                  <line class="map-tag__line" x1="0" y1="0" x2="-80" y2="-40" stroke="#00E5FF" stroke-width="1" stroke-dasharray="4 4"></line>
+                  <line class="map-tag__line" x1="0" y1="0" x2="60" y2="90" stroke="#033156" stroke-width="1" stroke-dasharray="4 4"></line>
+                  <circle class="map-tag__ring" cx="0" cy="0" r="50" fill="none" stroke="#00E5FF" stroke-width="2"></circle>
+                  <circle class="map-tag__ring map-tag__ring--b" cx="0" cy="0" r="50" fill="none" stroke="#00E5FF" stroke-width="1"></circle>
+                  <circle class="map-tag__dot" cx="0" cy="0" r="4" fill="#00E5FF"></circle>
+                </g>
+                <g class="map-tag" transform="translate(875 300)">
+                  <line class="map-tag__line" x1="0" y1="0" x2="-80" y2="-40" stroke="#00E5FF" stroke-width="1" stroke-dasharray="4 4"></line>
+                  <line class="map-tag__line" x1="0" y1="0" x2="60" y2="90" stroke="#033156" stroke-width="1" stroke-dasharray="4 4"></line>
+                  <circle class="map-tag__ring" cx="0" cy="0" r="50" fill="none" stroke="#00E5FF" stroke-width="2"></circle>
+                  <circle class="map-tag__ring map-tag__ring--b" cx="0" cy="0" r="50" fill="none" stroke="#00E5FF" stroke-width="1"></circle>
+                  <circle class="map-tag__dot" cx="0" cy="0" r="4" fill="#00E5FF"></circle>
+                </g>
+              </svg>
+            </div>
+          </div>
+          <div class="spec__body">
+            <span class="spec__num">II.</span>
+            <h3 class="spec__title">Spatial Intelligence</h3>
+            <p class="spec__text">
+              A lightweight network of BLE scanners calculates exact coordinates via advanced
+              trilateration, logging MAC addresses and RSSI values to determine precise
+              facility positioning.
+            </p>
+          </div>
+        </article>
+
+        <!-- III. Automated transactions -->
+        <article class="spec" data-reveal>
+          <div class="spec__stage spec__stage--grid">
+            <div class="schematic">
+              <div class="schematic__zone">
+                <span class="schematic__zone-label">Zone C</span>
+                <!-- the white work-order label that slides through the geofence -->
+                <span class="schematic__label" aria-hidden="true">
+                  <span class="schematic__label-chip">
+                    <span class="schematic__label-stripe"></span>
+                    <span class="schematic__label-body">
+                      <span class="schematic__label-bar"></span>
+                      <span class="schematic__label-bar schematic__label-bar--short"></span>
+                      <span class="schematic__label-foot">
+                        <span class="schematic__label-block"></span>
+                        <span class="schematic__label-bars"><span></span><span></span><span></span><span></span><span></span></span>
+                      </span>
+                    </span>
+                  </span>
+                </span>
+              </div>
+              <div class="schematic__link" aria-hidden="true">
+                <svg viewBox="0 0 100 20">
+                  <line x1="0" y1="10" x2="90" y2="10" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4" opacity=".7"></line>
+                  <polygon points="90,10 80,5 80,15" fill="currentColor" opacity=".7"></polygon>
+                  <line class="schematic__spark" x1="0" y1="10" x2="90" y2="10" stroke="currentColor" stroke-width="3" stroke-dasharray="90"></line>
+                  <polygon class="schematic__sparkhead" points="90,10 80,4 80,16" fill="currentColor"></polygon>
+                </svg>
+              </div>
+              <div class="schematic__node">
+                <span class="schematic__node-art">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <rect width="20" height="14" x="2" y="3" rx="2"></rect>
+                    <line x1="8" x2="16" y1="21" y2="21"></line>
+                    <line x1="12" x2="12" y1="17" y2="21"></line>
+                  </svg>
+                  <span class="schematic__badge" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="m20 6-11 11-5-5"></path>
+                    </svg>
+                  </span>
+                </span>
+                <span class="schematic__caption">WMS<br />Updated</span>
+              </div>
+            </div>
+          </div>
+          <div class="spec__body">
+            <span class="spec__num">III.</span>
+            <h3 class="spec__title">Automated Transactions</h3>
+            <p class="spec__text">
+              Physical movement translates to digital action. Entering geofenced zones
+              automatically triggers WMS transactions, eliminating manual barcode scanning and
+              labor time.
+            </p>
+          </div>
+        </article>
+
+        <!-- IV. Loss prevention -->
+        <article class="spec" data-reveal>
+          <div class="spec__stage spec__stage--grid">
+            <div class="schematic schematic--alert">
+              <div class="schematic__zone schematic__zone--alert">
+                <span class="schematic__alert-chip">Wrong Op</span>
+                <!-- the hand-held unit that reads the wrong pallet -->
+                <span class="schematic__device" aria-hidden="true">
+                  <span class="schematic__mini">
+                    <span class="schematic__mini-k">RT-892</span>
+                    <span class="schematic__mini-v">ZONE C</span>
+                  </span>
+                  <span class="schematic__led"></span>
+                  <span class="schematic__overlay">
+                    <span class="schematic__overlay-text">WRONG<br />OP</span>
+                  </span>
+                </span>
+              </div>
+              <div class="schematic__link schematic__link--alert" aria-hidden="true">
+                <svg viewBox="0 0 100 20">
+                  <line x1="0" y1="10" x2="100" y2="10" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4" opacity=".4"></line>
+                  <path class="schematic__spark schematic__spark--alert" d="M 20 10 Q 50 -10 80 10" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="100"></path>
+                </svg>
+                <span class="schematic__link-caption">Alert</span>
+              </div>
+              <div class="schematic__node schematic__node--alert">
+                <span class="schematic__node-art">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path>
+                    <path d="M12 9v4"></path>
+                    <path d="M12 17h.01"></path>
+                  </svg>
+                  <span class="schematic__badge schematic__badge--alert" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"></path>
+                      <path d="M12 9v4"></path>
+                      <path d="M12 17h.01"></path>
+                    </svg>
+                  </span>
+                </span>
+                <span class="schematic__caption">Mismatch<br />Detected</span>
+              </div>
+            </div>
+          </div>
+          <div class="spec__body">
+            <span class="spec__num">IV.</span>
+            <h3 class="spec__title">Loss Prevention</h3>
+            <p class="spec__text">
+              Transforms tracking into active security. Triggers immediate alerts if a pallet
+              is loaded incorrectly, or if sensitive materials leave designated secure areas.
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 03 / ROI & MARKETS ============ -->
+  <section class="section" id="roi-markets">
+    <div class="container">
+      <header class="section__head" data-reveal>
+        <span class="chip">03 / ROI &amp; Markets</span>
+        <h2 class="section__title">Business Impact &amp; Target Markets</h2>
+        <p class="section__lead">
+          Measurable impact across the supply chain. From eliminating mispicks in complex
+          distribution centers to enforcing rigid compliance in high-tech manufacturing,
+          discover how intelligent tracking directly accelerates your bottom line.
+        </p>
+      </header>
+
+      <div class="roi" data-reveal>
+        <span class="roi__glyph" aria-hidden="true"></span>
+        <h3 class="roi__title">Measurable Return on Investment</h3>
+        <p class="roi__lead">
+          H3RD's pricing strategy targets roughly 20-25% of a client's annualized operational
+          wastage, ensuring a rapid payback period. In enterprise deployments, the system
+          generates returns in two massive categories:
+        </p>
+        <div class="roi__pair">
+          <div class="roi__item">
+            <h4 class="roi__item-title">Hard Savings</h4>
+            <p class="roi__item-text">
+              Massive, quantifiable reductions in scrap, lost materials, and rework. Automates
+              supervisor KPIs, eliminates manual cycle counting, and removes the time spent
+              "hunting" for lost pallets.
+            </p>
+          </div>
+          <div class="roi__item">
+            <h4 class="roi__item-title">Soft Savings</h4>
+            <p class="roi__item-text">
+              Significant improvements in On-Time Delivery (OTD) metrics, facility throughput,
+              worker satisfaction by removing tedious scanning, and leaner inventory buffers
+              due to higher accuracy.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="markets" data-reveal>
+        <h3 class="markets__title">Target Industry Focus</h3>
+        <div class="tabs" role="tablist" aria-label="Target industries">
+          <button class="tab is-active" id="tab-industry-0" type="button" role="tab"
+                  aria-selected="true" aria-controls="industry-panel-0" data-tab="0">High-Tech Manufacturing</button>
+          <button class="tab" id="tab-industry-1" type="button" role="tab"
+                  aria-selected="false" aria-controls="industry-panel-1" data-tab="1" tabindex="-1">3PL &amp; Logistics</button>
+        </div>
+
+        <article class="tabpanel is-active" id="industry-panel-0" role="tabpanel"
+                 aria-labelledby="tab-industry-0" data-panel="0">
+          <div class="tabpanel__copy">
+            <h4 class="tabpanel__title">Complex, Multi-Step Assembly</h4>
+            <p class="tabpanel__text">
+              Tracking highly sensitive, expensive components through intricate processes like
+              Clean Room Assembly, IPQC, and Final Testing.
+            </p>
+            <ul class="bullets">
+              <li><span class="bullets__k">Paperless Compliance:</span> Eliminates particulate-shedding paper travelers in cleanrooms.</li>
+              <li><span class="bullets__k">Rework Reduction:</span> Tags update immediately to "HOLD" preventing further assembly on failed batches.</li>
+              <li><span class="bullets__k">Flawless Audit Trails:</span> Ensures no skipped steps in high-value component manufacturing.</li>
+            </ul>
+          </div>
+          <div class="tabpanel__media">
+            <img src="assets/images/facility.jpg" alt="A technician working at an instrumented assembly bench on a factory floor." width="1200" height="800" loading="lazy" decoding="async" />
+          </div>
+        </article>
+
+        <article class="tabpanel" id="industry-panel-1" role="tabpanel"
+                 aria-labelledby="tab-industry-1" data-panel="1" hidden>
+          <div class="tabpanel__copy">
+            <h4 class="tabpanel__title">High-Volume Inventory Management</h4>
+            <p class="tabpanel__text">
+              Managing staggering volumes of diverse inventory, tracking incoming shipments,
+              and ensuring 100% accuracy at pack-out.
+            </p>
+            <ul class="bullets">
+              <li><span class="bullets__k">Dock-to-Stock Speed:</span> Automates receiving processes to vastly improve cycle times.</li>
+              <li><span class="bullets__k">Dynamic Pick Paths:</span> Adjusts routing on the fly, optimizing associate movement.</li>
+              <li><span class="bullets__k">Zero Mis-Shipments:</span> Reusable shipping labels and geofenced outbound dock alerts ensure correct loading.</li>
+            </ul>
+          </div>
+          <div class="tabpanel__media">
+            <img src="assets/images/logistics.jpg" alt="Racked shelving in a high-volume distribution warehouse with cartons staged for outbound shipment." width="1200" height="800" loading="lazy" decoding="async" />
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="cta" id="demo">
+    <div class="container">
+      <div class="cta__inner" data-reveal>
+        <span class="chip">Enterprise Deployments</span>
+        <h2 class="cta__title">
+          Schedule a
+          <span class="cta__title-accent">Demo today</span>
+        </h2>
+        <p class="cta__lead">
+          Stop searching for lost pallets and start proactively managing your supply chain.
+          We'll show you exactly how our spatial intelligence web app and e-ink displays work
+          in your specific environment.
+        </p>
+        <p class="cta__actions">
+          <a class="btn btn--primary btn--lg" href="https://zcal.co/h3rd" target="_blank" rel="noopener noreferrer">Schedule a Demo with H3RD</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer__inner">
+    <a class="brand brand--footer" href="#top" aria-label="H3RD — back to top">
+      <img class="brand__mark" src="assets/images/logo-white-320.png" alt="" width="320" height="270" loading="lazy" decoding="async" />
+      <span class="brand__name">H3RD</span>
+    </a>
+    <div class="footer__contact">
+      <h2 class="footer__title">Contact Us</h2>
+      <p class="footer__line"><a href="mailto:info@h3rd.net">info@h3rd.net</a></p>
+      <p class="footer__line"><a href="tel:+14086434444">408-643-4444</a> (Sales Team)</p>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <p class="footer__copy">&copy; <span data-year>2026</span> H3RD, LLC.</p>
+    <span class="footer__confidential">Confidential.</span>
+  </div>
+</footer>
+
+<script src="js/main.js" defer></script>
+
+</body>
+</html>
+

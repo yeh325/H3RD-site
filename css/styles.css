@@ -1,0 +1,1035 @@
+/* =========================================================
+   H3RD — Precision Tracking. Effortless Efficiency.
+   Single stylesheet. No build step, no frameworks.
+   Design tokens mirror the live site exactly.
+   ---------------------------------------------------------
+   1. Tokens          6. Workflow diagram
+   2. Reset / base    7. Outcomes
+   3. Layout & UI     8. Specs (label, schematics)
+   4. Header / nav    9. ROI, markets, tabs
+   5. Hero           10. CTA, footer, motion
+   ========================================================= */
+
+/* ---------- 1. Tokens ---------- */
+:root {
+  /* Palette (measured from the live site) */
+  --bg: #0c0d0e;
+  --black: #000;
+  --ink: #fff;
+  --muted: #6b7280;
+  --accent: #033156;
+  --accent-light: #033156;
+  --cyan: #00e5ff;
+  --alert: #ff4444;
+  --alert-dark: #cc0000;
+  --grid: rgba(255, 255, 255, .05);
+  --surface: #16181a;
+  --surface-2: #dcdcdc;
+
+  /* Type */
+  --font-sans: "Roboto", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  --font-heading: "Spectral", Georgia, "Times New Roman", serif;
+  --font-sub: "Merriweather", Georgia, "Times New Roman", serif;
+  --font-mono: "Courier New", Courier, monospace;
+
+  /* Metrics */
+  --container: 1280px;
+  --gutter: clamp(1rem, 4vw, 2rem);
+  --header-h: 64px;
+  --reveal-delay: 0ms;
+  --radius-sm: .25rem;
+  --radius: .5rem;
+  --radius-lg: .75rem;
+  --ease: cubic-bezier(.4, 0, .2, 1);
+  color-scheme: dark;
+}
+
+/* ---------- 2. Reset / base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-h) + 16px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* The faint engineering grid that sits behind everything. */
+.grid-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+header, main, footer { position: relative; z-index: 1; }
+
+h1, h2, h3, h4 {
+  margin: 0 0 .6em;
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+}
+p { margin: 0 0 1em; }
+p:last-child, ul:last-child { margin-bottom: 0; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+img, svg { max-width: 100%; }
+img { height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+}
+
+::selection { background: rgba(0, 229, 255, .28); color: #fff; }
+
+/* ---------- 3. Layout & UI ---------- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.skip-link {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  z-index: 200;
+  transform: translate(-50%, -140%);
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  font-size: .875rem;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  padding: .7em 1.2em;
+  transition: transform .18s var(--ease);
+}
+.skip-link:focus { transform: translate(-50%, 0); }
+
+/* Mono eyebrow chip, e.g. "01 / METHODOLOGY" */
+.chip {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, .1);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  margin-bottom: 1rem;
+}
+.chip--sm { font-size: 9px; padding: 3px 10px; margin-bottom: .9rem; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, .1);
+  font-family: var(--font-sans);
+  font-size: .875rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 14px 24px;
+  transition: background-color .2s var(--ease), border-color .2s var(--ease);
+}
+.btn:hover, .btn:focus-visible { background: #05477a; border-color: rgba(255, 255, 255, .28); }
+.btn--lg { padding: 18px 36px; }
+
+.section { padding: clamp(3.5rem, 8vw, 5rem) 0; }
+.section + .section { border-top: 1px solid var(--grid); }
+
+.section__head {
+  margin: 0 0 clamp(2.5rem, 5vw, 4rem);
+  padding-left: 1.5rem;
+  border-left: 1px solid rgba(3, 49, 86, .2);
+}
+.section__title { font-family: var(--font-heading); font-size: clamp(2rem, 4.5vw, 3rem); letter-spacing: -.8px; line-height: 1.1; }
+.section__lead { max-width: 48rem; color: var(--muted); font-size: .9375rem; line-height: 1.625; margin-bottom: 0; }
+
+/* ---------- 4. Header / nav ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(12, 13, 14, .9);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--grid);
+}
+
+.header__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: var(--header-h);
+}
+
+.brand { display: inline-flex; align-items: center; gap: .75rem; }
+.brand__mark { width: 44px; height: auto; }
+.brand__name {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  line-height: 1;
+}
+
+.nav { display: flex; align-items: center; gap: 2.5rem; }
+.nav__list {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.nav__link {
+  font-size: .875rem;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--muted);
+  transition: color .2s var(--ease);
+}
+.nav__link:hover, .nav__link:focus-visible { color: #fff; }
+.nav__cta { padding: 12px 22px; font-size: .8125rem; }
+
+/* ---------- 5. Hero ---------- */
+.hero { padding: clamp(3rem, 9vw, 8rem) 0 clamp(3.5rem, 10vw, 9rem); }
+.hero__inner { text-align: center; }
+
+.hero__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 8vw, 6.875rem);
+  line-height: .9;
+  letter-spacing: -1.5px;
+  margin: 0 0 2.5rem;
+}
+.hero__title-accent { display: block; margin-top: 1rem; color: var(--accent); }
+
+.hero__lead {
+  max-width: 42rem;
+  margin: 0 auto 2.5rem;
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--accent);
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.625;
+  text-align: left;
+}
+.hero__actions { margin: 0; }
+.hero__actions .btn { width: 100%; }
+
+/* ---------- 6. Workflow diagram ---------- */
+.workflow__rail {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .75rem;
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+.workflow__cell { position: relative; display: flex; justify-content: center; }
+
+/* dashed connector running between the step tiles */
+.workflow__cell:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 28px;
+  left: calc(50% + 34px);
+  width: calc(100% - 68px);
+  height: 0;
+  border-top: 1px dashed rgba(255, 255, 255, .14);
+}
+
+.workflow__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .9rem;
+  width: 100%;
+}
+
+.workflow__tile {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 56px;
+  aspect-ratio: 1;
+  border: 1px solid var(--grid);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, .03);
+  color: var(--muted);
+  transition: color .3s var(--ease), border-color .3s var(--ease), background-color .3s var(--ease);
+}
+
+.workflow__num {
+  position: absolute;
+  top: -9px;
+  left: -9px;
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 1px solid var(--bg);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.workflow__icon { width: 20px; height: 20px; }
+
+.workflow__label {
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.25;
+  transition: color .3s var(--ease);
+}
+
+.workflow__step.is-active .workflow__tile {
+  border-color: var(--accent);
+  background: rgba(3, 49, 86, .18);
+  color: #fff;
+}
+.workflow__step.is-active .workflow__label { color: #fff; }
+
+.workflow__panel {
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+  border: 1px solid var(--grid);
+  background: rgba(255, 255, 255, .03);
+  padding: clamp(1.5rem, 3.5vw, 2.5rem);
+}
+.workflow__panel[hidden] { display: none; }
+.workflow__panel-title {
+  font-family: var(--font-sub);
+  font-size: clamp(1.5rem, 2.6vw, 1.875rem);
+  letter-spacing: -.75px;
+}
+.workflow__quote {
+  margin: 0 0 1.25rem;
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--accent);
+  font-family: var(--font-sub);
+  font-size: clamp(1.0625rem, 1.8vw, 1.375rem);
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-transform: none;
+  color: #fff;
+}
+.workflow__note { margin: 0; color: var(--muted); font-size: .875rem; line-height: 1.625; }
+
+.workflow__panel-art {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  max-width: 13rem;
+  aspect-ratio: 1;
+  margin-inline: auto;
+  border: 1px solid rgba(3, 49, 86, .55);
+  border-radius: 50%;
+  color: var(--accent);
+  background: radial-gradient(circle at 50% 50%, rgba(3, 49, 86, .16), transparent 70%);
+}
+.workflow__panel-art svg { width: 38%; height: auto; }
+
+/* ---------- 7. Outcomes ---------- */
+.outcomes { margin-top: clamp(3rem, 6vw, 4.5rem); }
+.outcomes__title {
+  font-family: var(--font-sub);
+  font-size: clamp(1.5rem, 2.6vw, 1.875rem);
+  letter-spacing: -.75px;
+}
+.outcomes__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem 1.25rem;
+  text-align: center;
+}
+.outcome__icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto .75rem;
+  border-radius: 50%;
+  border: 1px solid var(--grid);
+  background: rgba(3, 49, 86, .1);
+  color: var(--accent);
+  transition: border-color .3s var(--ease);
+}
+.outcome__icon svg { width: 20px; height: 20px; }
+.outcome:hover .outcome__icon { border-color: rgba(3, 49, 86, .4); }
+.outcome__title { font-size: .8125rem; font-weight: 700; letter-spacing: .05em; margin-bottom: .5rem; }
+.outcome__text { margin: 0; color: var(--muted); font-size: .8125rem; line-height: 1.625; }
+
+/* ---------- 8. Specs (artwork panels) ---------- */
+.specs { display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+
+.spec {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--grid);
+  background: rgba(255, 255, 255, .03);
+  overflow: hidden;
+  transition: background-color .3s var(--ease), border-color .3s var(--ease),
+              transform .3s var(--ease);
+}
+.spec:hover { background: rgba(255, 255, 255, .05); }
+.specs > .spec:nth-child(n + 2):hover { transform: translateY(-4px); }
+
+.spec__stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 17rem;
+  padding: 2rem 1.25rem;
+  background: var(--surface);
+  border-bottom: 1px solid var(--grid);
+  overflow: hidden;
+}
+.spec__stage--map { padding: 1.5rem; background: #0a0b0c; }
+.spec__stage--map img { width: 100%; height: auto; }
+
+.spec__body { flex: 1; padding: clamp(1.25rem, 2.5vw, 2rem); }
+.spec__num {
+  display: block;
+  margin-bottom: .4rem;
+  font-family: var(--font-sub);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+.spec__title { font-family: var(--font-sub); font-size: clamp(1.25rem, 2vw, 1.5rem); letter-spacing: -.5px; }
+.spec__text { margin: 0; color: var(--muted); font-size: .9375rem; line-height: 1.625; }
+
+/* --- the flip-able e-ink smart tag --- */
+.label3d {
+  display: block;
+  width: min(100%, 17.5rem);
+  aspect-ratio: 1.1;
+  padding: 0;
+  perspective: 2000px;
+}
+.label3d__inner {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform .7s var(--ease);
+}
+.label3d[aria-pressed="true"] .label3d__inner { transform: rotateY(180deg); }
+.label3d__face {
+  position: absolute;
+  inset: 0;
+  display: block;
+  border-radius: var(--radius-lg);
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, .5);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.label3d__face--front {
+  background: #f8f9fa;
+  border: 1px solid #bbb;
+  padding: .9rem 1rem;
+  text-align: left;
+}
+.label3d__face--back {
+  transform: rotateY(180deg);
+  display: grid;
+  place-items: center;
+  background: var(--surface-2);
+  border: 1px solid #bbb;
+}
+
+.eink { display: flex; flex-direction: column; height: 100%; font-family: var(--font-mono); color: #111; }
+.eink__head { display: flex; align-items: center; padding-bottom: .45rem; border-bottom: 1px dashed #9a9a9a; }
+.eink__brand { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; letter-spacing: -.02em; line-height: 1; }
+.eink__body { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; flex: 1; padding-top: .55rem; }
+.eink__col { display: flex; flex-direction: column; gap: .25rem; }
+.eink__col--right { padding-left: .75rem; border-left: 1px dashed #9a9a9a; }
+.eink__k { font-size: .48rem; letter-spacing: .1em; text-transform: uppercase; color: #5a5a5a; }
+.eink__k--tight { line-height: 1.3; }
+.eink__wo { font-size: 1.3rem; font-weight: 700; line-height: 1; letter-spacing: -.02em; }
+.eink__tag { align-self: flex-start; border: 1px solid #333; padding: 1px 5px; font-size: .44rem; letter-spacing: .12em; text-transform: uppercase; }
+.eink__v { font-size: .58rem; font-weight: 700; }
+.eink__zone { align-self: flex-start; background: #111; color: #fff; padding: 2px 6px; font-size: .48rem; letter-spacing: .14em; text-transform: uppercase; }
+.eink__qr { width: 68px; height: 68px; margin-top: .3rem; }
+.eink__foot { display: flex; flex-direction: column; gap: .3rem; padding-top: .45rem; border-top: 1px dashed #9a9a9a; }
+.eink__bars {
+  display: block;
+  height: 20px;
+  background: repeating-linear-gradient(90deg,
+    #111 0 2px, transparent 2px 4px, #111 4px 7px, transparent 7px 9px,
+    #111 9px 10px, transparent 10px 14px, #111 14px 15px, transparent 15px 18px);
+}
+.eink__backmark { font-family: var(--font-heading); font-size: 3.25rem; font-weight: 700; letter-spacing: .08em; color: #aaa; opacity: .3; }
+.eink__serial { position: absolute; right: 1rem; bottom: .9rem; font-family: var(--font-mono); font-size: .48rem; color: #aaa; opacity: .55; }
+
+/* --- mini schematics (cards III & IV) --- */
+.schematic {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  width: 100%;
+  max-width: 26rem;
+  color: var(--accent);
+}
+.schematic__zone {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 30%;
+  min-width: 5rem;
+  aspect-ratio: 1;
+  border: 2px dashed currentColor;
+  border-radius: var(--radius-sm);
+  opacity: .9;
+}
+.schematic__zone-label {
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+}
+.schematic__link { flex: 1; display: flex; align-items: center; max-width: 7rem; }
+.schematic__link svg { width: 100%; height: 20px; }
+.schematic__node { display: flex; flex-direction: column; align-items: center; gap: .5rem; color: var(--muted); }
+.schematic__node-art > svg { display: block; width: 48px; height: 48px; border-radius: 999px; }
+.schematic__caption {
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.schematic--alert { color: var(--alert); }
+.schematic__zone--alert {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: .5rem;
+  padding: .6rem;
+  background: rgba(255, 68, 68, .05);
+  border-color: var(--alert);
+  opacity: 1;
+}
+.schematic__alert-chip {
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--alert);
+}
+.schematic__mini { display: flex; flex-direction: column; gap: 2px; padding: .45rem .5rem; background: #222; }
+.schematic__mini-k { font-family: var(--font-mono); font-size: .45rem; color: #8a8a8a; }
+.schematic__mini-v { font-family: var(--font-mono); font-size: .5rem; font-weight: 700; color: #cfcfcf; }
+.schematic__link--alert {
+  flex-direction: column;
+  justify-content: center;
+  gap: .25rem;
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--alert);
+  text-align: center;
+}
+.schematic__link--alert svg { height: 2.5rem; overflow: visible; }
+.schematic__link-caption { display: block; }
+.schematic__node--alert { color: var(--alert); }
+.schematic__node--alert .schematic__caption { color: var(--alert); }
+
+/* --- Spec artwork motion (mirrors the loops in the live React bundle) ---
+   Everything here is opt-in twice over: the head script must have added .anim
+   (which it skips when the visitor prefers reduced motion) *and* the card must
+   have scrolled into view (.is-visible). Without both, each element rests in
+   its static state; the reduced-motion block at the end is explicit about it.
+   The timelines are the live ones (4s / 5s loops) and the segment stops come
+   from the `times` arrays in the original `animate` props. */
+
+/* the faint 30px blueprint grid behind stages II-IV (opacity .1, .3 on hover) */
+.spec__stage--grid > * { position: relative; z-index: 1; }
+.spec__stage--grid::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: .1;
+  transition: opacity .7s var(--ease);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+.spec:hover .spec__stage--grid::before { opacity: .3; }
+
+/* card II - the BLE tags pulsing over the floor map */
+.map-frame { position: relative; width: 100%; }
+.map-frame img { display: block; width: 100%; height: auto; }
+.map-tags { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.map-tag:nth-child(1) { --tag-delay: 0s; }
+.map-tag:nth-child(2) { --tag-delay: 1.5s; }
+.map-tag:nth-child(3) { --tag-delay: 3s; }
+.map-tag__ring { transform-box: fill-box; transform-origin: center; opacity: 0; }
+.map-tag__line { opacity: 0; }
+
+@keyframes map-ring {
+  from { transform: scale(0); opacity: 1; }
+  to { transform: scale(3); opacity: 0; }
+}
+@keyframes map-line {
+  0% { opacity: 0; }
+  50% { opacity: .4; }
+  100% { opacity: 0; }
+}
+.anim .spec.is-visible .map-tag__ring {
+  animation: map-ring 4s ease-out infinite;
+  animation-delay: var(--tag-delay, 0s);
+}
+.anim .spec.is-visible .map-tag__ring--b { animation-delay: calc(var(--tag-delay, 0s) + .6s); }
+.anim .spec.is-visible .map-tag__line {
+  animation: map-line 4s linear infinite;
+  animation-delay: var(--tag-delay, 0s);
+}
+
+/* card III - a work-order label crosses the geofence */
+.schematic__label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+}
+.schematic__label-chip {
+  display: flex;
+  flex: none;
+  gap: 2px;
+  width: 3.5rem;
+  height: 2.25rem;
+  padding: 2px;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, .45);
+  overflow: hidden;
+}
+.schematic__label-stripe { width: 30%; background: #cc0000; }
+.schematic__label-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 70%;
+  padding: .2rem;
+  background: #eee;
+}
+.schematic__label-bar { height: 2px; border-radius: 999px; background: rgba(0, 0, 0, .6); }
+.schematic__label-bar--short { width: 75%; }
+.schematic__label-foot { display: flex; align-items: flex-end; justify-content: space-between; margin-top: .15rem; }
+.schematic__label-block { width: .6rem; height: .6rem; padding: 1px; border: 1px solid rgba(0, 0, 0, .6); }
+.schematic__label-block::after { content: ""; display: block; width: 100%; height: 100%; background: rgba(0, 0, 0, .6); }
+.schematic__label-bars { display: flex; gap: 1px; }
+.schematic__label-bars span { display: block; width: 1px; height: .7rem; background: rgba(0, 0, 0, .6); }
+
+@keyframes schematic-slide {
+  0% { transform: translateX(-70%); opacity: 0; }
+  30% { transform: translateX(0); opacity: 1; }
+  70% { transform: translateX(0); opacity: 1; }
+  100% { transform: translateX(70%); opacity: 0; }
+}
+.anim .spec.is-visible .schematic__label { animation: schematic-slide 4s ease-in-out infinite; }
+
+/* the transaction spark that travels down the connector */
+.schematic__spark { stroke-dashoffset: 90; }
+.schematic__sparkhead { opacity: 0; }
+@keyframes schematic-spark {
+  0% { stroke-dashoffset: 90; }
+  30% { stroke-dashoffset: 90; }
+  40% { stroke-dashoffset: 0; }
+  50% { stroke-dashoffset: -90; }
+  100% { stroke-dashoffset: -90; }
+}
+@keyframes schematic-sparkhead {
+  0% { opacity: 0; }
+  35% { opacity: 0; }
+  40% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 0; }
+}
+.anim .spec.is-visible .schematic__spark { animation: schematic-spark 4s linear infinite; }
+.anim .spec.is-visible .schematic__sparkhead { animation: schematic-sparkhead 4s linear infinite; }
+
+/* the badge that pops over the WMS node */
+.schematic__node-art { position: relative; display: block; }
+.schematic__badge {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: .5rem;
+  opacity: 0;
+}
+.schematic__badge svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 2px;
+  border-radius: 999px;
+  background: #000;
+  color: var(--accent);
+}
+.schematic__badge--alert svg { color: var(--alert); }
+@keyframes schematic-badge {
+  0% { transform: scale(0); opacity: 0; }
+  30% { transform: scale(0); opacity: 0; }
+  40% { transform: scale(1.2); opacity: 1; }
+  45% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1); opacity: 1; }
+  80% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0); opacity: 0; }
+}
+.anim .spec.is-visible .schematic__badge { animation: schematic-badge 4s ease-out infinite; }
+
+/* card IV - the wrong pallet is read and the screen flips to WRONG OP */
+.schematic__device { position: relative; display: flex; }
+.schematic__led {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  z-index: 2;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: #555;
+}
+.schematic__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  background: #000;
+  opacity: 0;
+}
+.schematic__overlay-text {
+  width: 100%;
+  padding: 2px 0;
+  background: #fff;
+  color: #000;
+  font-family: var(--font-mono);
+  font-size: .5rem;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: center;
+}
+@keyframes schematic-device {
+  0% { transform: translateY(-30px); opacity: 0; }
+  20% { transform: translateY(0); opacity: 1; }
+  80% { transform: translateY(0); opacity: 1; }
+  100% { transform: translateY(-30px); opacity: 0; }
+}
+@keyframes schematic-led {
+  0% { background-color: #555; }
+  25% { background-color: #555; }
+  30% { background-color: #ff0000; }
+  35% { background-color: #555; }
+  40% { background-color: #ff0000; }
+  45% { background-color: #555; }
+  50% { background-color: #ff0000; }
+  100% { background-color: #555; }
+}
+@keyframes schematic-overlay {
+  0% { opacity: 0; }
+  25% { opacity: 0; }
+  26% { opacity: 1; }
+  80% { opacity: 1; }
+  81% { opacity: 0; }
+  100% { opacity: 0; }
+}
+@keyframes schematic-overlay-text {
+  0% { opacity: 1; }
+  30% { opacity: .3; }
+  40% { opacity: 1; }
+  50% { opacity: .3; }
+  60% { opacity: 1; }
+  70% { opacity: .3; }
+  100% { opacity: 1; }
+}
+.anim .spec.is-visible .schematic__device { animation: schematic-device 5s ease-in-out infinite; }
+.anim .spec.is-visible .schematic__led { animation: schematic-led 5s linear infinite; }
+.anim .spec.is-visible .schematic__overlay { animation: schematic-overlay 5s linear infinite; }
+.anim .spec.is-visible .schematic__overlay-text { animation: schematic-overlay-text 5s linear infinite; }
+
+/* the curved alert path and the alert node badge */
+.schematic__spark--alert { stroke-dashoffset: 100; }
+@keyframes schematic-spark-alert {
+  0% { stroke-dashoffset: 100; opacity: 0; }
+  28% { stroke-dashoffset: 100; opacity: 0; }
+  40% { stroke-dashoffset: 0; opacity: 1; }
+  60% { stroke-dashoffset: 0; opacity: 0; }
+  100% { stroke-dashoffset: 100; opacity: 0; }
+}
+.anim .spec.is-visible .schematic__spark--alert { animation: schematic-spark-alert 5s linear infinite; }
+@keyframes schematic-badge-alert {
+  0% { transform: scale(0); opacity: 0; }
+  35% { transform: scale(0); opacity: 0; }
+  40% { transform: scale(1.2); opacity: 1; }
+  45% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1); opacity: 1; }
+  80% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0); opacity: 0; }
+}
+.anim .spec.is-visible .schematic__badge--alert { animation: schematic-badge-alert 5s ease-out infinite; }
+@keyframes schematic-caption-alert {
+  0% { opacity: 0; }
+  45% { opacity: 0; }
+  50% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.anim .spec.is-visible .schematic__node--alert .schematic__caption {
+  animation: schematic-caption-alert 5s linear infinite;
+}
+
+/* ---------- 9. ROI, markets, tabs ---------- */
+.roi {
+  border: 1px solid var(--grid);
+  background: rgba(255, 255, 255, .03);
+  padding: clamp(1.75rem, 4vw, 3rem);
+}
+.roi__title { font-family: var(--font-sub); font-size: clamp(1.375rem, 2.4vw, 1.75rem); letter-spacing: -.75px; }
+.roi__glyph {
+  position: relative;
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin-bottom: 1.5rem;
+  border: 1px solid rgba(3, 49, 86, .6);
+  border-radius: var(--radius-sm);
+  background: rgba(3, 49, 86, .25);
+}
+.roi__glyph::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 6px;
+  height: 6px;
+  margin: auto;
+  border-radius: 50%;
+  background: var(--cyan);
+}
+.roi__lead { max-width: 52rem; color: var(--muted); font-size: .9375rem; line-height: 1.625; }
+.roi__pair { display: grid; gap: 1.5rem; margin-top: 1.75rem; }
+.roi__item { padding-left: 1.25rem; border-left: 3px solid var(--accent); }
+.roi__item-title { font-family: var(--font-sub); font-size: 1rem; letter-spacing: .01em; margin-bottom: .5rem; }
+.roi__item-text { margin: 0; color: var(--muted); font-size: .875rem; line-height: 1.625; }
+
+.markets { margin-top: clamp(3rem, 6vw, 4.5rem); }
+.markets__title { font-family: var(--font-sub); font-size: clamp(1.5rem, 2.6vw, 1.875rem); letter-spacing: -.75px; }
+.tabs { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 2rem; }
+.tab {
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--grid);
+  background: rgba(255, 255, 255, .03);
+  color: var(--muted);
+  font-size: .75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color .2s var(--ease), background-color .2s var(--ease), border-color .2s var(--ease);
+}
+.tab:hover { color: #fff; }
+.tab.is-active { background: var(--accent); border-color: rgba(255, 255, 255, .12); color: #fff; }
+
+.tabpanel { display: grid; gap: 0; border: 1px solid var(--grid); }
+.tabpanel[hidden] { display: none; }
+.tabpanel__copy { padding: clamp(1.5rem, 3.5vw, 2.5rem); }
+.tabpanel__title { font-family: var(--font-sub); font-size: clamp(1.125rem, 2vw, 1.375rem); letter-spacing: -.5px; }
+.tabpanel__text { color: var(--muted); font-size: .9375rem; line-height: 1.625; }
+.tabpanel__media { min-height: 15rem; }
+.tabpanel__media img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); }
+
+.bullets { display: grid; gap: 1rem; margin-top: 1.5rem; }
+.bullets li { position: relative; padding-left: 1.5rem; font-size: .875rem; line-height: 1.55; color: #dcdcdc; }
+.bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .45em;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+.bullets__k {
+  font-family: var(--font-mono);
+  font-size: .6875rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: #8fb4d9;
+}
+
+/* ---------- 10. CTA, footer, motion ---------- */
+.cta { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+.cta__inner {
+  border: 1px solid var(--grid);
+  background:
+    radial-gradient(circle at 70% 30%, rgba(3, 49, 86, .45) 0%, transparent 70%),
+    rgba(3, 49, 86, .1);
+  padding: clamp(2.5rem, 6vw, 5rem) clamp(1.5rem, 4vw, 3rem);
+  text-align: center;
+}
+.cta__title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 5.5vw, 3.5rem);
+  line-height: 1;
+  letter-spacing: -1.2px;
+  margin-bottom: 1.5rem;
+}
+.cta__title-accent { display: block; color: var(--accent); }
+.cta__lead { max-width: 46rem; margin: 0 auto 2.5rem; color: var(--muted); font-size: 1rem; line-height: 1.625; }
+.cta__actions { margin: 0; }
+
+.site-footer { padding: 4rem 0 2.5rem; background: var(--black); border-top: 1px solid var(--grid); }
+.footer__inner { display: grid; gap: 2.5rem; align-items: start; }
+.brand--footer .brand__mark { width: 60px; }
+.brand--footer .brand__name { font-size: 2rem; }
+.footer__contact { text-align: left; }
+.footer__title { font-size: .875rem; font-weight: 700; letter-spacing: .06em; margin-bottom: .9rem; }
+.footer__line { margin: 0 0 .5rem; color: var(--muted); font-size: .875rem; }
+.footer__line a { color: #fff; }
+.footer__line a:hover { text-decoration: underline; }
+.footer__bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: .75rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--grid);
+}
+.footer__copy { margin: 0; color: var(--muted); font-size: .8125rem; }
+.footer__confidential {
+  background: var(--accent);
+  border-radius: 2px;
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: .625rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+}
+
+/* Opt-in scroll reveal — only active once the head script adds .anim. */
+.anim [data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity .6s var(--ease) var(--reveal-delay),
+    transform .6s var(--ease) var(--reveal-delay);
+}
+.anim [data-reveal].is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+  /* Looping artwork must stop rather than be fast-forwarded: an .01ms infinite
+     animation restarts every frame and flickers. The head script already withholds
+     .anim here, so this is belt and braces. */
+  .spec:hover { transform: none; }
+  .spec:hover .spec__stage--grid::before { opacity: .1; }
+  .anim .spec .map-tag__ring,
+  .anim .spec .map-tag__line,
+  .anim .spec .schematic__label,
+  .anim .spec .schematic__spark,
+  .anim .spec .schematic__sparkhead,
+  .anim .spec .schematic__badge,
+  .anim .spec .schematic__device,
+  .anim .spec .schematic__led,
+  .anim .spec .schematic__overlay,
+  .anim .spec .schematic__overlay-text,
+  .anim .spec .schematic__node--alert .schematic__caption {
+    animation: none !important;
+  }
+}
+
+/* ---------- Breakpoints ---------- */
+@media (min-width: 40rem) {
+  .hero__actions .btn { width: auto; }
+  .hero__lead { font-size: 1.125rem; }
+  .outcomes__grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .roi__pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tabpanel { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .footer__contact { text-align: right; }
+}
+
+@media (min-width: 48rem) {
+  :root { --header-h: 88px; }
+  .brand__mark { width: 52px; }
+  .brand__name { font-size: 1.875rem; }
+  .workflow__tile { width: 86px; }
+  .workflow__icon { width: 40px; height: 40px; }
+  .workflow__cell:not(:last-child)::after {
+    top: 43px;
+    left: calc(50% + 50px);
+    width: calc(100% - 100px);
+  }
+  .workflow__panel { grid-template-columns: minmax(0, 1fr) 15rem; }
+  .specs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .spec__stage { min-height: 20rem; }
+  .footer__inner { grid-template-columns: 1fr auto; }
+}
+
+/* Mobile header: the live site keeps only the logo and the "Book a Demo"
+   button below 768px — the three section links are hidden. */
+@media (max-width: 47.9375rem) {
+  .nav__list { display: none; }
+  .nav__cta { padding: 12px 20px; }
+}

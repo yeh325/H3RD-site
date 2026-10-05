@@ -1,0 +1,29 @@
+{
+  "name": "H3RD — Precision Tracking. Effortless Efficiency.",
+  "short_name": "H3RD",
+  "description": "E-ink smart tags with BLE spatial intelligence that connect the physical floor to your digital systems.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0c0d0e",
+  "theme_color": "#0c0d0e",
+  "lang": "en",
+  "icons": [
+    {
+      "src": "assets/images/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/favicon.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}

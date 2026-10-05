@@ -1,0 +1,18 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
+*.code-workspace
+*.swp
+
+# Local preview / build output
+_site/
+
+# Live-site reference captures (working material, never published)
+_shots/
+
+# Logs
+*.log
+npm-debug.log*
