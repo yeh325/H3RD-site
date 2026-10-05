@@ -97,9 +97,37 @@ It verifies HTML tag balance, duplicate ids, that every `#anchor` resolves,
 that every local asset reference exists on disk, CSS brace balance, JS
 delimiter balance, and that `main.js` stays ES5-only.
 
+## Deploy
+
 `.github/workflows/deploy.yml` publishes `index.html css js assets favicon.ico
 site.webmanifest CNAME .nojekyll` to GitHub Pages on push to `master`.
-`_shots/` is gitignored and is never published.
+`_shots/` is gitignored and is never published. Dedicated to
+`https://github.com/yeh325/H3RD-site`, whose default branch is `master`.
+
+Two settings live in **Settings → Pages**, not in this repo. Until the first of
+them is set, the workflow fails at its `configure-pages` step with *"Get Pages
+site failed. Please verify that the repository has Pages enabled and configured
+to build using GitHub Actions"*:
+
+- **Build and deployment → Source: GitHub Actions.**
+- **Custom domain: `h3rd.net`**, then **Enforce HTTPS**.
+
+The `CNAME` file in the repo root is a leftover from branch-based publishing —
+when a workflow publishes the site it is ignored and not required, so the custom
+domain above is the setting that actually counts.
+
+DNS for `h3rd.net` must point at GitHub Pages rather than Wix:
+
+| Type | Name | Value |
+|---|---|---|
+| `A` | `@` | `185.199.108.153` `185.199.109.153` `185.199.110.153` `185.199.111.153` |
+| `AAAA` | `@` | `2606:50c0:8000::153` `2606:50c0:8001::153` `2606:50c0:8002::153` `2606:50c0:8003::153` |
+| `CNAME` | `www` | `yeh325.github.io` |
+
+The old Wix records — `185.230.63.186`, `185.230.63.107`, `185.230.63.171` and the
+`www` → `cdn1.wixdns.net` alias — can be deleted once the new records resolve.
+TLS is issued by GitHub once the domain resolves, so **Enforce HTTPS** only
+becomes selectable after the DNS is live.
 
 ## Contact details
 
