@@ -104,17 +104,22 @@ site.webmanifest CNAME .nojekyll` to GitHub Pages on push to `master`.
 `_shots/` is gitignored and is never published. Dedicated to
 `https://github.com/yeh325/H3RD-site`, whose default branch is `master`.
 
-Two settings live in **Settings → Pages**, not in this repo. Until the first of
-them is set, the workflow fails at its `configure-pages` step with *"Get Pages
-site failed. Please verify that the repository has Pages enabled and configured
-to build using GitHub Actions"*:
+### Repository settings
 
-- **Build and deployment → Source: GitHub Actions.**
+Two settings live in **Settings → Pages**, not in this repo:
+
+- **Build and deployment → Source: GitHub Actions.** Until this is set, the
+  workflow fails at its `configure-pages` step with *"Get Pages site failed.
+  Please verify that the repository has Pages enabled and configured to build
+  using GitHub Actions"*.
 - **Custom domain: `h3rd.net`**, then **Enforce HTTPS**.
 
-The `CNAME` file in the repo root is a leftover from branch-based publishing —
-when a workflow publishes the site it is ignored and not required, so the custom
-domain above is the setting that actually counts.
+Publishing from the branch instead exposes the whole repo root — `README.md` and
+`.gitignore` both return 200 that way, and 404 once the workflow owns the site.
+The `CNAME` file still ships inside the artifact, but under Actions-based
+publishing the custom domain *setting* above is what counts.
+
+### DNS
 
 DNS for `h3rd.net` must point at GitHub Pages rather than Wix:
 
@@ -126,8 +131,54 @@ DNS for `h3rd.net` must point at GitHub Pages rather than Wix:
 
 The old Wix records — `185.230.63.186`, `185.230.63.107`, `185.230.63.171` and the
 `www` → `cdn1.wixdns.net` alias — can be deleted once the new records resolve.
-TLS is issued by GitHub once the domain resolves, so **Enforce HTTPS** only
-becomes selectable after the DNS is live.
+If Wix shows the apex `A` records as read-only, disconnect the domain from the
+Wix site first; Wix does not release records for a domain it is actively
+serving.
+
+**Do not touch the mail records.** `h3rd.net` also runs Google Workspace mail
+out of the same zone:
+
+| Type | Name | Value |
+|---|---|---|
+| `MX` | `@` | `10 aspmx.l.google.com` |
+| `TXT` | `@` | `v=spf1 include:_spf.google.com ~all` |
+| `TXT` | `@` | two `google-site-verification=…` values |
+
+### Enabling HTTPS
+
+Both the apex `A` records **and** the `www` CNAME have to be right before GitHub
+will issue a certificate. With only the apex correct, Pages reports *"Your
+site's DNS settings are using a custom subdomain, www.h3rd.net, that is not set
+up with a correct CNAME record … (InvalidCNAMEError)"* and never provisions the
+certificate — `https://h3rd.net` then fails on a certificate-name mismatch,
+serving GitHub's `*.github.io` fallback:
+
+```bash
+echo | openssl s_client -connect 185.199.108.153:443 -servername h3rd.net 2>&1 | grep '^ 0 s:'
+#   CN=*.github.io   → not issued yet
+#   CN=h3rd.net      → issued
+```
+
+Pages caches the result of its last DNS check and keeps displaying it until a
+new check runs, so that error can outlive the fix. Force a fresh check by
+editing **Custom domain** (remove `h3rd.net`, add it back and save) or by
+re-running the deployment. Once the check is green GitHub issues the certificate
+by itself — minutes to about an hour, though the docs allow up to 24h — and
+**Enforce HTTPS** becomes selectable. Ticking it also buys `http://` →
+`https://` and `www` → apex, both automatic.
+
+### Verifying a deployment
+
+Address the edge IP directly to bypass local DNS caching while propagation
+settles:
+
+```bash
+curl -sI -H 'Host: h3rd.net' http://185.199.108.153/               # 200, Server: GitHub.com
+curl -sI --resolve h3rd.net:443:185.199.108.153 https://h3rd.net/  # fails until the cert exists
+```
+
+Once live, `https://h3rd.net`, `http://h3rd.net` and `http://www.h3rd.net`
+should all end up at `https://h3rd.net`.
 
 ## Contact details
 
